@@ -1501,7 +1501,9 @@ public class MqttAndroidClient extends BroadcastReceiver implements
 				((MqttTokenAndroid) token).notifyFailure(exceptionThrown);
 			}
 		} else {
-			mqttService.traceError(MqttService.TAG, "simpleAction : token is null");	
+			if (mqttService != null) {
+				mqttService.traceError(MqttService.TAG, "simpleAction : token is null");
+			}
 		}
 	}
 
