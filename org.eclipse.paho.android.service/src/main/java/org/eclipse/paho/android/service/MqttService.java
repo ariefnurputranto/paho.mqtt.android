@@ -410,8 +410,16 @@ public class MqttService extends Service implements MqttTraceHandler {
    * @return true if the specified client is connected to an MQTT server
    */
   public boolean isConnected(String clientHandle) {
-    MqttConnection client = getConnection(clientHandle);
-    return client.isConnected();
+      try {
+          // Your code
+          MqttConnection client = getConnection(clientHandle);
+          return client.isConnected();
+      } catch (IllegalArgumentException e) {
+          // ignored
+          return false;
+      }
+
+
   }
 
   /**
